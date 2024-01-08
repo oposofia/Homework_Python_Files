@@ -103,20 +103,38 @@ def copy_contact():
         file.writelines(f'{contacts_list[number_contact-1]}\n\n')
         # print(contacts_list[number_contact-1])
 
+def delete_contact():
+    with open('c:/Users/sko88/OneDrive/Рабочий стол/GB/SPEC/01 Python/Seminar8/phonebook1.txt',
+              'r', encoding='UTF-8') as file:
+        contacts_list = file.read().rstrip().split('\n\n')
+        for contact in enumerate(contacts_list,1):
+            print(*contact)
+        number_contact = int(input('Введите номер контакта для удаления: '))
+    # print(len(contacts_list))
+    with open('c:/Users/sko88/OneDrive/Рабочий стол/GB/SPEC/01 Python/Seminar8/phonebook1.txt',
+              'w', encoding='UTF-8') as file:
+        # file.close()
+    # with open('c:/Users/sko88/OneDrive/Рабочий стол/GB/SPEC/01 Python/Seminar8/phonebook1.txt','r', encoding='UTF-8') as file:
+        for i in range(number_contact-1):
+            file.write(f'{contacts_list[i]}\n\n')
+        for i in range(number_contact, len(contacts_list)):
+            file.write(f'{contacts_list[i]}\n\n')
+
 def interface():
     with open('c:/Users/sko88/OneDrive/Рабочий стол/GB/SPEC/01 Python/Seminar8/phonebook1.txt','a', encoding='UTF-8'):
         pass
     command = '-1'
-    while command != '5':
+    while command != '6':
         print('Варианты меню: \n'
             '1. Добавить контакт\n'
             '2. Вывести на экран\n'
             '3. Поиск контакта\n'
             '4. Скопировать контакт в файл\n'
-            '5. Выход из программы')
+            '5. Удалить контакт\n'
+            '6. Выход из программы')
         command = input('Выберите пункт меню: ')
     
-        while command not in ('1', '2', '3', '4', '5'):
+        while command not in ('1', '2', '3', '4', '5', '6'):
             print('Некорректный ввод данных')
             command = input('Выберите пункт меню: ')
 
@@ -130,6 +148,8 @@ def interface():
             case '4':
                 copy_contact()    
             case '5':
-                print("Всего хорошего!")
+                delete_contact() 
+            case '6':
+                print("Всего хорошего!")       
 
 interface()
