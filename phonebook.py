@@ -101,7 +101,6 @@ def copy_contact():
         number_contact = int(input('Введите номер контакта для копирования: '))
     with open('c:/Users/sko88/OneDrive/Рабочий стол/GB/SPEC/01 Python/Seminar8/new_phonebook.txt','a', encoding='UTF-8') as file:
         file.writelines(f'{contacts_list[number_contact-1]}\n\n')
-        # print(contacts_list[number_contact-1])
 
 def delete_contact():
     with open('c:/Users/sko88/OneDrive/Рабочий стол/GB/SPEC/01 Python/Seminar8/phonebook1.txt',
@@ -110,11 +109,8 @@ def delete_contact():
         for contact in enumerate(contacts_list,1):
             print(*contact)
         number_contact = int(input('Введите номер контакта для удаления: '))
-    # print(len(contacts_list))
     with open('c:/Users/sko88/OneDrive/Рабочий стол/GB/SPEC/01 Python/Seminar8/phonebook1.txt',
               'w', encoding='UTF-8') as file:
-        # file.close()
-    # with open('c:/Users/sko88/OneDrive/Рабочий стол/GB/SPEC/01 Python/Seminar8/phonebook1.txt','r', encoding='UTF-8') as file:
         for i in range(number_contact-1):
             file.write(f'{contacts_list[i]}\n\n')
         for i in range(number_contact, len(contacts_list)):
